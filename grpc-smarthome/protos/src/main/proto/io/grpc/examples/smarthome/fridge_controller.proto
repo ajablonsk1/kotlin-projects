@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.examples.smarthome";
+option java_outer_classname = "FridgeControllerProto";
+
+package smarthome;
+
+service FridgeController {
+  rpc ChangeTemperature(Temperature) returns (Reply) {}
+  rpc ChangeHumidity(Humidity) returns (Reply) {}
+  rpc ChangeFridgeLightState(ChangeState) returns(Reply) {}
+  rpc OpenFridge(ChangeState) returns(Reply) {}
+  rpc GetProduct(ProductReq) returns(Reply) {}
+  rpc AddProduct(ProductReq) returns(Reply) {}
+  rpc GetFridgeStatus(EmptyRequest) returns(Reply) {}
+  rpc CheckFridgeConnection(EmptyRequest) returns(Reply) {}
+}
+
+
+message Temperature {
+  double temperature = 1;
+}
+
+message Humidity {
+  double humidity = 1;
+}
+
+message EmptyRequest {}
+
+message ProductReq {
+  string product = 1;
+}
+
+message ChangeState {
+  State state = 1;
+}
+
+message Reply {
+  string message = 1;
+}
+
+enum State {
+  ON = 0;
+  OFF = 1;
+}

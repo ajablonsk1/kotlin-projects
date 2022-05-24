@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.examples.smarthome";
+option java_outer_classname = "SensorProto";
+
+package smarthome;
+
+import "io/grpc/examples/smarthome/light_controller.proto";
+import "io/grpc/examples/smarthome/fridge_controller.proto";
+
+service Sensor {
+  rpc ChangeTemperature(Temperature) returns (Reply) {}
+  rpc ChangeHumidity(Humidity) returns (Reply) {}
+  rpc GetActualTemperature(EmptyRequest) returns (Reply) {}
+  rpc GetActualHumidity(EmptyRequest) returns (Reply) {}
+}

@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.examples.smarthome";
+option java_outer_classname = "LightControllerProto";
+
+package smarthome;
+
+import "io/grpc/examples/smarthome/fridge_controller.proto";
+
+service LightController {
+  rpc ChangeLivingRoomLightState(ChangeState) returns(Reply) {}
+  rpc ChangeKitchenLightState(ChangeState) returns(Reply) {}
+  rpc ChangeBathroomLightState(ChangeState) returns(Reply) {}
+  rpc ChangeBedroomLightState(ChangeState) returns(Reply) {}
+  rpc GetLivingRoomLightState(EmptyRequest) returns(Reply) {}
+  rpc GetKitchenLightState(EmptyRequest) returns(Reply) {}
+  rpc GetBathroomLightState(EmptyRequest) returns(Reply) {}
+  rpc GetBedroomLightState(EmptyRequest) returns(Reply) {}
+  rpc GetSmartHomeStatus(EmptyRequest) returns(Reply) {}
+  rpc CheckSmartHomeConnection(EmptyRequest) returns(Reply) {}
+}
