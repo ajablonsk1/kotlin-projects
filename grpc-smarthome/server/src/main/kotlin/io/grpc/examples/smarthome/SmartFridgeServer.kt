@@ -118,8 +118,8 @@ class SmartFridgeServer(private val port: Int) {
             }
             return reply {
                 message = "Fridge light: ${fridgeController.getLightStatus()} \n" +
-                        "$opened \nTemperature: ${fridgeController.temperatureSensor.temp} \n" +
-                        "Humidity: ${fridgeController.humiditySensor.humidity} \n" +
+                        "$opened \nTemperature: ${fridgeController.temperatureSensor.temp} *C\n" +
+                        "Humidity: ${fridgeController.humiditySensor.humidity}% \n" +
                         "Products: $products"
             }
         }

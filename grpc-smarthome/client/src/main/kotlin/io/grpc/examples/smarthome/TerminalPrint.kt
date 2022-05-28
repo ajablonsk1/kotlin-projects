@@ -163,6 +163,9 @@ suspend fun smartHomeTerminal(client: SmartHomeClient){
                                 if(humidityDouble == null) {
                                     println("Argument should be numeric!")
                                     continue
+                                } else if(humidityDouble < 0 || humidityDouble > 100) {
+                                    println("Humidity range is 0-100")
+                                    continue
                                 } else {
                                     client.changeHumidity(humidityDouble)
                                 }
@@ -231,6 +234,9 @@ suspend fun fridgeTerminal(client: SmartHomeClient){
                     val humidityDouble = humidity?.toDoubleOrNull()
                     if(humidityDouble == null) {
                         println("Argument should be numeric!")
+                        continue
+                    } else if(humidityDouble < 0 || humidityDouble > 100) {
+                        println("Humidity range is 0-100")
                         continue
                     } else {
                         client.changeHumidityFridge(humidityDouble)
