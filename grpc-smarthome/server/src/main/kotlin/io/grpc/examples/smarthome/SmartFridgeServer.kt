@@ -10,7 +10,7 @@ val fridgeController: FridgeController = FridgeController()
 class SmartFridgeServer(private val port: Int) {
     private val server: Server = ServerBuilder
         .forPort(port)
-        .addService(SmartFridgeServer.FridgeService())
+        .addService(FridgeService())
         .build()
 
     fun start() {
