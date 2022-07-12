@@ -1,5 +1,3 @@
-package sudoku
-
 class SudokuSolver(val input: Array<Array<Int>>) {
     private val size = 9
 
@@ -69,5 +67,14 @@ class SudokuSolver(val input: Array<Array<Int>>) {
             input[currRow][currCol] = 0
         }
         return false
+    }
+
+    fun printSudoku() {
+        for (i in 0 until size) {
+            for (j in 0 until size) {
+                print("${input[i][j]} ")
+            }
+            println()
+        }
     }
 }

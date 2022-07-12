@@ -1,33 +1,18 @@
 // Copyright 2000-2021 JetBrains s.r.o. and contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
-import androidx.compose.material.MaterialTheme
-import androidx.compose.desktop.ui.tooling.preview.Preview
-import androidx.compose.material.Button
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
-import sudoku.SudokuSolver
-
-@Composable
-@Preview
-fun App() {
-    var text by remember { mutableStateOf("Hello, World!") }
-
-    MaterialTheme {
-        Button(onClick = {
-            text = "Hello, Desktop!"
-        }) {
-            Text(text)
-        }
-    }
-}
 
 fun main() = application {
-    Window(onCloseRequest = ::exitApplication) {
-        App()
-    }
+    val sudokuGrid: Array<Array<Int>> = arrayOf(
+        arrayOf(3, 0, 6, 5, 0, 8, 4, 0, 0),
+        arrayOf(5, 2, 0, 0, 0, 0, 0, 0, 0),
+        arrayOf(0, 8, 7, 0, 0, 0, 0, 3, 1),
+        arrayOf(0, 0, 3, 0, 1, 0, 0, 8, 0 ),
+        arrayOf(9, 0, 0, 8, 6, 3, 0, 0, 5),
+        arrayOf(0, 5, 0, 0, 9, 0, 6, 0, 0),
+        arrayOf(1, 3, 0, 0, 0, 0, 2, 5, 0),
+        arrayOf(0, 0, 0, 0, 0, 0, 0, 7, 4),
+        arrayOf(0, 0, 5, 2, 0, 6, 3, 0, 0))
+    val solver: SudokuSolver = SudokuSolver(sudokuGrid)
+    solver.solveSudoku(0, 0)
+    solver.printSudoku()
 }
